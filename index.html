@@ -1432,19 +1432,20 @@
 
       updatePresenceBox();
 
-      if (["padrinho", "madrinha", "pais", "familia"].includes(tipo)) {
-        document.getElementById("areaPadrinhos").classList.remove("hidden");
+     if (["padrinho", "madrinha", "casal_padrinhos", "pais", "familia"].includes(tipo)) {
+  document.getElementById("areaPadrinhos").classList.remove("hidden");
       }
     }
 
     function formatTipo(tipo) {
-      const map = {
-        convidado: "Convidado",
-        padrinho: "Padrinho",
-        madrinha: "Madrinha",
-        pais: "Família",
-        familia: "Família"
-      };
+     const map = {
+  convidado: "Convidado",
+  padrinho: "Padrinho",
+  madrinha: "Madrinha",
+  casal_padrinhos: "Casal de padrinhos",
+  pais: "Família",
+  familia: "Família"
+};
 
       return map[tipo] || "Convidado";
     }
