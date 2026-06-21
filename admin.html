@@ -820,11 +820,11 @@
             <input id="guestSearch" placeholder="Pesquisar por nome ou telefone..." oninput="renderGuests()" />
             <select id="guestTypeFilter" onchange="renderGuests()">
               <option value="">Todos os tipos</option>
-              <option value="convidado">Convidado</option>
               <option value="padrinho">Padrinho</option>
-              <option value="madrinha">Madrinha</option>
-              <option value="familia">Família</option>
-              <option value="pais">Pais</option>
+<option value="madrinha">Madrinha</option>
+<option value="casal_padrinhos">Casal de padrinhos</option>
+<option value="familia">Família</option>
+<option value="pais">Pais</option>
             </select>
 
             <select id="guestStatusFilter" onchange="renderGuests()">
@@ -1738,12 +1738,13 @@ ${link}`;
 
     function typeBadge(type) {
       const label = {
-        convidado: "Convidado",
-        padrinho: "Padrinho",
-        madrinha: "Madrinha",
-        familia: "Família",
-        pais: "Pais"
-      }[type] || "Convidado";
+  convidado: "Convidado",
+  padrinho: "Padrinho",
+  madrinha: "Madrinha",
+  casal_padrinhos: "Casal de padrinhos",
+  familia: "Família",
+  pais: "Pais"
+}[type] || "Convidado";
 
       return `<span class="badge badge-tipo">${label}</span>`;
     }
