@@ -1000,113 +1000,22 @@
       font-size: 1.02rem;
     }
 
-    .bridesmaids-illustration,
-    .groomsmen-illustration {
+    .people-illustration {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 14px;
       min-height: 230px;
       margin-top: 28px;
     }
 
-    .bride-person {
-      width: 72px;
-      height: 178px;
-      position: relative;
-      border-radius: 42px 42px 8px 8px;
-      background: linear-gradient(90deg, #071f78, #06145f);
-      box-shadow: 0 18px 25px rgba(16, 42, 67, 0.12);
+    .people-svg {
+      width: min(360px, 100%);
+      height: auto;
+      display: block;
     }
 
-    .bride-person::before {
-      content: "";
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #ddb98e;
-    }
-
-    .bride-person::after {
-      content: "";
-      position: absolute;
-      top: -64px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 62px;
-      height: 27px;
-      border-radius: 50%;
-      background: #d8bd8d;
-    }
-
-    .bride-person-small {
-      width: 66px;
-      height: 154px;
-      background: linear-gradient(90deg, #08275a, #051b43);
-    }
-
-    .bride-person-tall {
-      width: 74px;
-      height: 198px;
-      background: linear-gradient(90deg, #0b2c65, #06145f);
-    }
-
-    .bride-person-right {
-      width: 68px;
-      height: 150px;
-      background: linear-gradient(90deg, #0e4a91, #071f78);
-    }
-
-    .groom-person {
-      width: 78px;
-      height: 174px;
-      position: relative;
-      border-radius: 38px 38px 8px 8px;
-      background: linear-gradient(180deg, #d8d8d8, #a8a8a8);
-      box-shadow: 0 18px 25px rgba(16, 42, 67, 0.12);
-    }
-
-    .groom-person::before {
-      content: "";
-      position: absolute;
-      top: -58px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #ddb98e;
-    }
-
-    .groom-person::after {
-      content: "";
-      position: absolute;
-      top: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 12px;
-      height: 100px;
-      background: #071f78;
-      border-radius: 999px;
-    }
-
-    .groom-person-left {
-      height: 166px;
-      background: linear-gradient(180deg, #eeeeee, #a7a7a7);
-    }
-
-    .groom-person-middle {
-      height: 180px;
-      background: linear-gradient(180deg, #e0e0e0, #9d9d9d);
-    }
-
-    .groom-person-right {
-      height: 170px;
-      background: linear-gradient(180deg, #dddddd, #9e9e9e);
+    .people-svg g {
+      filter: drop-shadow(0 14px 16px rgba(16, 42, 67, 0.16));
     }
 
     .god-gallery {
@@ -1515,10 +1424,12 @@
         font-size: 2.7rem;
       }
 
-      .bridesmaids-illustration,
-      .groomsmen-illustration {
-        gap: 6px;
-        transform: scale(0.9);
+      .people-illustration {
+        min-height: 210px;
+      }
+
+      .people-svg {
+        width: min(330px, 100%);
       }
 
       .god-gallery-grid {
@@ -1917,10 +1828,29 @@
               seja longo e azul marinho.
             </p>
 
-            <div class="bridesmaids-illustration">
-              <div class="bride-person bride-person-small"></div>
-              <div class="bride-person bride-person-tall"></div>
-              <div class="bride-person bride-person-right"></div>
+            <div class="people-illustration">
+              <svg viewBox="0 0 360 230" class="people-svg" aria-label="Ilustração de madrinhas">
+                <g transform="translate(38 34)">
+                  <ellipse cx="35" cy="24" rx="25" ry="22" fill="#d7b58c"/>
+                  <path d="M8 25 C8 4 62 4 62 25 C58 9 13 9 8 25" fill="#c8a56e"/>
+                  <path d="M35 54 C18 82 8 122 0 176 L70 176 C62 122 52 82 35 54Z" fill="#07145f"/>
+                  <path d="M22 64 C12 92 8 130 7 176 L22 176 C22 128 27 88 35 54Z" fill="#102A43" opacity=".55"/>
+                </g>
+
+                <g transform="translate(142 8)">
+                  <ellipse cx="38" cy="28" rx="27" ry="24" fill="#d7b58c"/>
+                  <path d="M8 29 C8 4 68 4 68 29 C62 9 15 9 8 29" fill="#c8a56e"/>
+                  <path d="M38 60 C17 96 8 142 0 210 L76 210 C68 142 59 96 38 60Z" fill="#071f78"/>
+                  <path d="M20 74 C12 112 9 158 9 210 L26 210 C27 150 32 98 38 60Z" fill="#0e4a91" opacity=".45"/>
+                </g>
+
+                <g transform="translate(252 46)">
+                  <ellipse cx="34" cy="24" rx="24" ry="21" fill="#d7b58c"/>
+                  <path d="M8 25 C8 4 60 4 60 25 C55 10 14 10 8 25" fill="#c8a56e"/>
+                  <path d="M34 54 C16 84 8 120 0 166 L68 166 C60 120 52 84 34 54Z" fill="#0e4a91"/>
+                  <path d="M20 66 C12 96 9 132 8 166 L22 166 C22 124 28 86 34 54Z" fill="#07145f" opacity=".45"/>
+                </g>
+              </svg>
             </div>
           </div>
 
@@ -1932,10 +1862,38 @@
               também na cor azul marinho.
             </p>
 
-            <div class="groomsmen-illustration">
-              <div class="groom-person groom-person-left"></div>
-              <div class="groom-person groom-person-middle"></div>
-              <div class="groom-person groom-person-right"></div>
+            <div class="people-illustration">
+              <svg viewBox="0 0 360 230" class="people-svg" aria-label="Ilustração de padrinhos">
+                <g transform="translate(38 38)">
+                  <ellipse cx="35" cy="24" rx="24" ry="22" fill="#d7b58c"/>
+                  <path d="M15 10 C28 -4 48 -4 60 13 C50 6 28 6 15 10Z" fill="#5b432e"/>
+                  <path d="M10 58 L60 58 L74 184 L0 184Z" fill="#b9b9b9"/>
+                  <path d="M22 58 L35 92 L48 58 L60 184 L10 184Z" fill="#d9d9d9"/>
+                  <path d="M35 62 L28 184 L42 184Z" fill="#071f78"/>
+                  <path d="M22 58 L35 92 L15 74Z" fill="#f7f7f7"/>
+                  <path d="M48 58 L35 92 L55 74Z" fill="#f7f7f7"/>
+                </g>
+
+                <g transform="translate(142 12)">
+                  <ellipse cx="38" cy="28" rx="27" ry="24" fill="#d7b58c"/>
+                  <path d="M16 12 C30 -5 53 -5 67 15 C55 8 31 8 16 12Z" fill="#5b432e"/>
+                  <path d="M10 66 L66 66 L82 218 L0 218Z" fill="#a9a9a9"/>
+                  <path d="M23 66 L38 103 L53 66 L66 218 L10 218Z" fill="#dedede"/>
+                  <path d="M38 70 L30 218 L46 218Z" fill="#071f78"/>
+                  <path d="M23 66 L38 103 L15 84Z" fill="#ffffff"/>
+                  <path d="M53 66 L38 103 L62 84Z" fill="#ffffff"/>
+                </g>
+
+                <g transform="translate(252 42)">
+                  <ellipse cx="34" cy="24" rx="24" ry="21" fill="#d7b58c"/>
+                  <path d="M14 10 C27 -4 47 -4 59 13 C48 7 27 7 14 10Z" fill="#5b432e"/>
+                  <path d="M10 58 L58 58 L70 178 L0 178Z" fill="#bdbdbd"/>
+                  <path d="M22 58 L34 90 L46 58 L58 178 L10 178Z" fill="#e1e1e1"/>
+                  <path d="M34 62 L27 178 L41 178Z" fill="#071f78"/>
+                  <path d="M22 58 L34 90 L15 75Z" fill="#ffffff"/>
+                  <path d="M46 58 L34 90 L54 75Z" fill="#ffffff"/>
+                </g>
+              </svg>
             </div>
           </div>
         </div>
