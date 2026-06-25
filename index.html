@@ -1059,20 +1059,78 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      min-height: 230px;
+      min-height: 250px;
       margin-top: 28px;
     }
 
-    .outfit-image {
-      width: min(300px, 100%);
+    .people-svg {
+      width: min(390px, 100%);
       height: auto;
       display: block;
-      object-fit: contain;
+      overflow: visible;
+    }
+
+    .people-svg .shadow {
       filter: drop-shadow(0 16px 18px rgba(16, 42, 67, 0.16));
     }
 
-    .outfit-image-padrinhos {
-      width: min(330px, 100%);
+    .people-svg .skin {
+      fill: #ddb890;
+    }
+
+    .people-svg .hair-blonde {
+      fill: #d8bf8d;
+    }
+
+    .people-svg .hair-dark {
+      fill: #2f2a25;
+    }
+
+    .people-svg .hair-brown {
+      fill: #5d4033;
+    }
+
+    .people-svg .dress-dark {
+      fill: url(#dressDarkGradient);
+    }
+
+    .people-svg .dress-mid {
+      fill: url(#dressMidGradient);
+    }
+
+    .people-svg .dress-blue {
+      fill: url(#dressBlueGradient);
+    }
+
+    .people-svg .suit-light {
+      fill: url(#suitLightGradient);
+    }
+
+    .people-svg .suit-mid {
+      fill: url(#suitMidGradient);
+    }
+
+    .people-svg .suit-dark {
+      fill: url(#suitDarkGradient);
+    }
+
+    .people-svg .shirt {
+      fill: #f8f8f8;
+    }
+
+    .people-svg .tie {
+      fill: #071f78;
+    }
+
+    .people-svg .line-soft {
+      stroke: rgba(16, 42, 67, 0.16);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+    }
+
+    .people-svg .shoe {
+      fill: #f1f1f1;
     }
 
     .god-gallery {
@@ -1491,12 +1549,8 @@
         min-height: 210px;
       }
 
-      .outfit-image {
-        width: min(280px, 100%);
-      }
-
-      .outfit-image-padrinhos {
-        width: min(310px, 100%);
+      .people-svg {
+        width: min(350px, 100%);
       }
 
       .god-gallery-grid {
@@ -1896,7 +1950,67 @@
             </p>
 
             <div class="people-illustration">
-              <img class="outfit-image outfit-image-madrinhas" src="madrinhas.png" alt="Referência de vestidos azul marinho para madrinhas">
+              <svg viewBox="0 0 420 270" class="people-svg" aria-label="Ilustração de madrinhas com vestidos azul marinho">
+                <defs>
+                  <linearGradient id="dressDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#102A43"/>
+                    <stop offset="55%" stop-color="#071f78"/>
+                    <stop offset="100%" stop-color="#06145f"/>
+                  </linearGradient>
+
+                  <linearGradient id="dressMidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#12365f"/>
+                    <stop offset="55%" stop-color="#071f78"/>
+                    <stop offset="100%" stop-color="#06145f"/>
+                  </linearGradient>
+
+                  <linearGradient id="dressBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0e4a91"/>
+                    <stop offset="55%" stop-color="#071f78"/>
+                    <stop offset="100%" stop-color="#06145f"/>
+                  </linearGradient>
+                </defs>
+
+                <g class="shadow" transform="translate(34 32)">
+                  <ellipse cx="58" cy="37" rx="28" ry="31" class="skin"/>
+                  <path d="M30 38 C31 4 85 2 88 38 C80 18 40 18 30 38Z" class="hair-blonde"/>
+                  <path d="M34 31 C25 50 30 75 47 86 C39 62 41 42 53 25Z" class="hair-blonde"/>
+                  <path d="M82 31 C92 54 86 77 69 87 C77 62 75 42 63 25Z" class="hair-blonde"/>
+
+                  <path d="M58 72 C43 91 32 133 20 226 L96 226 C85 133 74 91 58 72Z" class="dress-dark"/>
+                  <path d="M38 99 C22 124 13 170 10 226 L31 226 C34 165 44 111 58 72Z" fill="#06145f" opacity=".45"/>
+                  <path d="M42 75 L74 75 L84 112 L31 112Z" class="dress-dark"/>
+                  <path d="M42 75 C32 86 26 99 24 112" class="line-soft"/>
+                  <path d="M74 75 C83 86 89 99 91 112" class="line-soft"/>
+                </g>
+
+                <g class="shadow" transform="translate(145 8)">
+                  <ellipse cx="62" cy="42" rx="31" ry="34" fill="#c59b75"/>
+                  <path d="M28 45 C30 3 94 1 97 45 C89 22 39 22 28 45Z" class="hair-dark"/>
+                  <path d="M29 36 C14 66 21 104 47 116 C37 84 40 57 56 28Z" class="hair-dark"/>
+                  <path d="M95 36 C111 66 104 104 77 116 C88 84 84 57 68 28Z" class="hair-dark"/>
+
+                  <path d="M62 82 C42 108 28 162 14 252 L111 252 C97 162 83 108 62 82Z" class="dress-mid"/>
+                  <path d="M35 114 C24 152 20 204 20 252 L44 252 C44 192 51 126 62 82Z" fill="#102A43" opacity=".38"/>
+                  <path d="M39 85 L85 85 L98 128 L26 128Z" class="dress-mid"/>
+                  <path d="M40 85 C53 100 72 100 85 85" fill="none" stroke="#d8bd8d" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M28 128 C50 138 77 138 99 128" fill="none" stroke="#0e4a91" stroke-width="2.5" opacity=".55"/>
+                </g>
+
+                <g class="shadow" transform="translate(275 35)">
+                  <ellipse cx="56" cy="38" rx="28" ry="31" class="skin"/>
+                  <path d="M25 39 C27 4 85 3 88 39 C78 18 36 18 25 39Z" class="hair-brown"/>
+                  <path d="M26 33 C13 57 20 85 42 96 C34 70 37 47 51 25Z" class="hair-brown"/>
+                  <path d="M87 33 C104 61 96 103 70 116 C80 77 76 49 61 25Z" class="hair-brown"/>
+
+                  <path d="M56 74 C38 98 26 142 14 225 L96 225 C89 171 82 132 72 105 L96 160 C106 184 105 207 96 225 L56 225Z" class="dress-blue"/>
+                  <path d="M38 77 L74 77 L88 115 L25 115Z" class="dress-blue"/>
+                  <path d="M74 105 C99 132 108 168 91 211" fill="none" stroke="#06145f" stroke-width="7" opacity=".35" stroke-linecap="round"/>
+                  <path d="M77 120 C92 130 96 142 91 157 C83 151 77 140 77 120Z" fill="#0e4a91" opacity=".75"/>
+                  <path d="M80 151 C101 160 103 180 92 196 C83 184 78 170 80 151Z" fill="#071f78" opacity=".75"/>
+                  <path d="M78 186 C95 195 96 212 88 225 L65 225 C72 212 77 199 78 186Z" fill="#06145f" opacity=".7"/>
+                </g>
+              </svg>
             </div>
           </div>
 
@@ -1909,7 +2023,69 @@
             </p>
 
             <div class="people-illustration">
-              <img class="outfit-image outfit-image-padrinhos" src="padrinhos.png" alt="Referência de terno cinza, camisa branca e gravata azul marinho para padrinhos">
+              <svg viewBox="0 0 420 270" class="people-svg" aria-label="Ilustração de padrinhos com terno cinza e gravata azul marinho">
+                <defs>
+                  <linearGradient id="suitLightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#efefef"/>
+                    <stop offset="55%" stop-color="#c9c9c9"/>
+                    <stop offset="100%" stop-color="#8f8f8f"/>
+                  </linearGradient>
+
+                  <linearGradient id="suitMidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#dedede"/>
+                    <stop offset="55%" stop-color="#bababa"/>
+                    <stop offset="100%" stop-color="#838383"/>
+                  </linearGradient>
+
+                  <linearGradient id="suitDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#d3d3d3"/>
+                    <stop offset="55%" stop-color="#a7a7a7"/>
+                    <stop offset="100%" stop-color="#707070"/>
+                  </linearGradient>
+                </defs>
+
+                <g class="shadow" transform="translate(44 38)">
+                  <ellipse cx="55" cy="35" rx="28" ry="30" class="skin"/>
+                  <path d="M30 22 C43 2 72 3 84 25 C68 14 47 14 30 22Z" class="hair-blonde"/>
+                  <path d="M22 82 L88 82 L102 213 L8 213Z" class="suit-light"/>
+                  <path d="M37 82 L55 123 L73 82 L89 213 L22 213Z" class="shirt"/>
+                  <path d="M55 90 L47 213 L64 213Z" class="tie"/>
+                  <path d="M37 82 L55 123 L25 105Z" fill="#b5b5b5"/>
+                  <path d="M73 82 L55 123 L85 105Z" fill="#b5b5b5"/>
+                  <path d="M24 214 L49 214 L49 224 L18 224Z" class="shoe"/>
+                  <path d="M61 214 L91 214 L98 224 L61 224Z" class="shoe"/>
+                  <path d="M26 110 C20 142 19 178 22 213" class="line-soft"/>
+                  <path d="M86 110 C92 142 93 178 90 213" class="line-soft"/>
+                </g>
+
+                <g class="shadow" transform="translate(162 16)">
+                  <ellipse cx="58" cy="38" rx="30" ry="32" class="skin"/>
+                  <path d="M31 24 C44 2 75 2 88 25 C72 15 49 15 31 24Z" fill="#3b2d23"/>
+                  <path d="M22 90 L94 90 L110 245 L6 245Z" class="suit-mid"/>
+                  <path d="M39 90 L58 134 L78 90 L94 245 L22 245Z" class="shirt"/>
+                  <path d="M58 98 L49 245 L68 245Z" class="tie"/>
+                  <path d="M39 90 L58 134 L26 112Z" fill="#a8a8a8"/>
+                  <path d="M78 90 L58 134 L91 112Z" fill="#a8a8a8"/>
+                  <path d="M22 245 L52 245 L52 256 L14 256Z" class="shoe"/>
+                  <path d="M66 245 L100 245 L108 256 L66 256Z" class="shoe"/>
+                  <path d="M27 118 C19 154 18 198 23 245" class="line-soft"/>
+                  <path d="M91 118 C99 154 100 198 95 245" class="line-soft"/>
+                </g>
+
+                <g class="shadow" transform="translate(292 41)">
+                  <ellipse cx="52" cy="34" rx="27" ry="29" class="skin"/>
+                  <path d="M26 21 C40 1 68 2 81 23 C67 13 43 13 26 21Z" class="hair-brown"/>
+                  <path d="M20 80 L84 80 L98 213 L6 213Z" class="suit-dark"/>
+                  <path d="M36 80 L52 120 L68 80 L84 213 L20 213Z" class="shirt"/>
+                  <path d="M52 88 L44 213 L61 213Z" class="tie"/>
+                  <path d="M36 80 L52 120 L24 103Z" fill="#9a9a9a"/>
+                  <path d="M68 80 L52 120 L81 103Z" fill="#9a9a9a"/>
+                  <path d="M20 213 L46 213 L46 224 L13 224Z" class="shoe"/>
+                  <path d="M60 213 L90 213 L97 224 L60 224Z" class="shoe"/>
+                  <path d="M24 106 C18 141 17 178 21 213" class="line-soft"/>
+                  <path d="M82 106 C88 141 89 178 85 213" class="line-soft"/>
+                </g>
+              </svg>
             </div>
           </div>
         </div>
