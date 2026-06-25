@@ -453,6 +453,75 @@
       line-height: 1.7;
     }
 
+    .guest-message {
+      background:
+        radial-gradient(circle at top left, rgba(214, 181, 109, 0.2), transparent 30%),
+        linear-gradient(135deg, #ffffff, #f8f4ea);
+    }
+
+    .guest-message-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(214, 181, 109, 0.28);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 48px);
+      box-shadow: var(--sombra);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guest-message-card::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(214, 181, 109, 0.12);
+      top: -80px;
+      left: -80px;
+    }
+
+    .guest-message-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(16, 42, 67, 0.08);
+      right: -100px;
+      bottom: -100px;
+    }
+
+    .guest-message-card h2 {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--azul);
+      font-weight: 400;
+      line-height: 0.95;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .guest-message-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 820px;
+      margin: 0 auto 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .guest-message-sign {
+      font-family: "Cinzel", serif;
+      color: var(--dourado2);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1532,6 +1601,33 @@
       </div>
     </section>
 
+    <section id="mensagemConvidados" class="guest-message">
+      <div class="container">
+        <div class="guest-message-card">
+          <h2>Vocês fazem parte da nossa história</h2>
+
+          <p>
+            Algumas pessoas tornam a vida mais leve, mais bonita e mais especial.
+            Por isso, queremos compartilhar com vocês um dos momentos mais importantes da nossa caminhada.
+          </p>
+
+          <p>
+            Será uma alegria enorme ter você conosco no dia em que diremos o nosso <strong>“sim”</strong>
+            diante de Deus, da nossa família e das pessoas que amamos.
+          </p>
+
+          <p>
+            Preparamos este convite com carinho para que você acompanhe todos os detalhes,
+            confirme sua presença e participe desse momento tão sonhado.
+          </p>
+
+          <div class="guest-message-sign">
+            Com carinho, Guilherme & Khauane
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contador">
       <div class="container">
         <div class="section-head">
@@ -2066,6 +2162,12 @@
         document.getElementById("godHeroText").classList.remove("hidden");
         document.getElementById("heroGodBtn").classList.remove("hidden");
         document.getElementById("areaPadrinhos").classList.remove("hidden");
+
+        const mensagemConvidados = document.getElementById("mensagemConvidados");
+
+        if (mensagemConvidados) {
+          mensagemConvidados.classList.add("hidden");
+        }
       }
 
       updatePresenceBox();
