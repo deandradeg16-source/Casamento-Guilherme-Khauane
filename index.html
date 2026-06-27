@@ -1941,7 +1941,7 @@
       const tipoTexto = formatTipo(tipo);
       const god = isGodparentType(tipo);
 
-      document.getElementById("guestPill").textContent = `Olá, ${currentGuest.nome} • ${tipoTexto}`;
+      document.getElementById("guestPill").textContent = `Olá, ${currentGuest.nome} `;
       document.getElementById("rsvpTitle").textContent = `Olá, ${currentGuest.nome}!`;
       document.getElementById("presenceObs").value = currentGuest.observacao || "";
       setupGuestCountField();
