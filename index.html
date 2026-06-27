@@ -1941,7 +1941,7 @@
       const tipoTexto = formatTipo(tipo);
       const god = isGodparentType(tipo);
 
-      document.getElementById("guestPill").textContent = `Olá, ${currentGuest.nome} `;
+      document.getElementById("guestPill").textContent = `Olá, ${currentGuest.nome}`;
       document.getElementById("rsvpTitle").textContent = `Olá, ${currentGuest.nome}!`;
       document.getElementById("presenceObs").value = currentGuest.observacao || "";
       setupGuestCountField();
@@ -2110,7 +2110,7 @@
 
       const { data: choices, error: choicesError } = await db
         .from("escolhas_presentes")
-        .select("id, convidado_id, presente_id, criado_em");
+        .select("id, convidado_id, presente_id, mensagem, criado_em");
 
       if (choicesError) {
         console.error(choicesError);
@@ -2161,26 +2161,80 @@
       }
 
       grid.innerHTML = gifts.map(gift => {
-        const chosenCount = allChoices.filter(choice => choice.presente_id === gift.id).length;
-        const chosenByMe = allChoices.some(choice => choice.presente_id === gift.id && choice.convidado_id === currentGuest.id);
+        const choices = allChoices.filter(choice => choice.presente_id === gift.id);
+        const chosenCount = choices.length;
+        const chosenByMe = choices.some(choice => choice.convidado_id === currentGuest.id);
+        const fullGiftChoice = choices.find(choice => choice.mensagem === "presente_inteiro");
+        const fullGiftChosenByMe = fullGiftChoice?.convidado_id === currentGuest.id;
+
+        const isQuota = gift.tipo === "cota";
         const isUnique = gift.tipo === "unico";
-        const unavailable = isUnique && chosenCount > 0 && !chosenByMe;
 
-        const tag = gift.tipo === "cota" ? "Cota" : unavailable ? "Já escolhido" : "Presente único";
+        const unavailableUnique = isUnique && chosenCount > 0 && !chosenByMe;
+        const unavailableQuota = isQuota && fullGiftChoice && !chosenByMe;
+        const unavailable = unavailableUnique || unavailableQuota;
 
-        const buttonText = chosenByMe
-          ? "Escolhido por você"
+        const tag = isQuota
+          ? fullGiftChoice
+            ? "Presente completo escolhido"
+            : chosenCount > 0
+              ? `${chosenCount} cota(s) escolhida(s)`
+              : "Cota"
           : unavailable
-            ? "Indisponível"
-            : gift.tipo === "cota"
-              ? "Escolher esta cota"
-              : "Escolher presente";
+            ? "Já escolhido"
+            : "Presente único";
 
-        const priceLabel = gift.tipo === "cota"
+        const priceLabel = isQuota
           ? gift.valor
-            ? `Valor sugerido: ${formatMoney(gift.valor)}`
+            ? `Valor sugerido da cota: ${formatMoney(gift.valor)}`
             : "Valor livre"
           : "Presente da lista";
+
+        let giftButtons = "";
+
+        if (chosenByMe) {
+          giftButtons = `
+            <button class="btn btn-success" disabled>
+              ${fullGiftChosenByMe ? "Presente completo escolhido por você" : "Escolhido por você"}
+            </button>
+          `;
+        } else if (unavailable) {
+          giftButtons = `
+            <button class="btn btn-light" disabled>
+              Indisponível
+            </button>
+          `;
+        } else if (isQuota) {
+          const canChooseFullGift = !fullGiftChoice;
+
+          giftButtons = `
+            <button
+              class="btn btn-dark"
+              onclick="chooseGift('${gift.id}', 'cota')"
+            >
+              Escolher uma cota
+            </button>
+
+            <button
+              class="btn ${canChooseFullGift ? "btn-outline" : "btn-light"}"
+              ${canChooseFullGift ? "" : "disabled"}
+              onclick="chooseGift('${gift.id}', 'presente_inteiro')"
+              title="${canChooseFullGift ? "Escolher o presente inteiro" : "Este presente já foi escolhido inteiro"}"
+              style="margin-top: 8px;"
+            >
+              ${canChooseFullGift ? "Presentear inteiro" : "Inteiro indisponível"}
+            </button>
+          `;
+        } else {
+          giftButtons = `
+            <button
+              class="btn btn-dark"
+              onclick="chooseGift('${gift.id}', 'unico')"
+            >
+              Escolher presente
+            </button>
+          `;
+        }
 
         return `
           <article class="gift-card ${unavailable ? "chosen" : ""}">
@@ -2188,28 +2242,22 @@
             <h3>${escapeHtml(gift.nome)}</h3>
             <p>${escapeHtml(gift.descricao || "Presente escolhido com carinho para nossa lista.")}</p>
             <div class="gift-price">${priceLabel}</div>
-            <button
-              class="btn ${chosenByMe ? "btn-success" : unavailable ? "btn-light" : "btn-dark"}"
-              ${unavailable || chosenByMe ? "disabled" : ""}
-              onclick="chooseGift('${gift.id}')"
-            >
-              ${buttonText}
-            </button>
+            ${giftButtons}
           </article>
         `;
       }).join("");
     }
 
-    async function chooseGift(giftId) {
+    async function chooseGift(giftId, choiceType = "cota") {
       if (!currentGuest) return;
 
       const gift = allGifts.find(item => item.id === giftId);
 
       if (!gift) return;
 
-      const alreadyChosenByMe = allChoices.some(choice => {
-        return choice.presente_id === gift.id && choice.convidado_id === currentGuest.id;
-      });
+      const choices = allChoices.filter(choice => choice.presente_id === gift.id);
+      const alreadyChosenByMe = choices.some(choice => choice.convidado_id === currentGuest.id);
+      const fullGiftChoice = choices.find(choice => choice.mensagem === "presente_inteiro");
 
       if (alreadyChosenByMe) {
         toast("Você já escolheu este presente.");
@@ -2217,17 +2265,28 @@
       }
 
       if (gift.tipo === "unico") {
-        const chosenCount = allChoices.filter(choice => choice.presente_id === gift.id).length;
-
-        if (chosenCount > 0) {
+        if (choices.length > 0) {
           toast("Este presente já foi escolhido por outro convidado.");
           await loadGifts();
           return;
         }
+
+        choiceType = "unico";
+      }
+
+      if (gift.tipo === "cota") {
+        if (fullGiftChoice) {
+          toast("Este presente já foi escolhido por completo.");
+          await loadGifts();
+          return;
+        }
+
       }
 
       const confirmText = gift.tipo === "cota"
-        ? `Deseja escolher a cota "${gift.nome}"? Depois você poderá realizar o Pix com o valor que desejar.`
+        ? choiceType === "presente_inteiro"
+          ? `Deseja escolher o presente inteiro "${gift.nome}"? Ele ficará registrado como presente completo.`
+          : `Deseja escolher uma cota de "${gift.nome}"? Depois você poderá realizar o Pix com o valor que desejar.`
         : `Deseja escolher o presente "${gift.nome}"?`;
 
       if (!confirm(confirmText)) return;
@@ -2237,7 +2296,7 @@
         .insert({
           convidado_id: currentGuest.id,
           presente_id: gift.id,
-          mensagem: null
+          mensagem: choiceType === "presente_inteiro" ? "presente_inteiro" : null
         });
 
       if (error) {
@@ -2246,7 +2305,9 @@
         return;
       }
 
-      toast("Presente registrado com sucesso!");
+      toast(choiceType === "presente_inteiro"
+        ? "Presente completo registrado com sucesso!"
+        : "Presente registrado com sucesso!");
 
       await loadGifts();
 
