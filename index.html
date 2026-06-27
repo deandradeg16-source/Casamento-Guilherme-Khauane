@@ -389,33 +389,12 @@
       min-height: 620px;
       border-radius: 220px 220px 34px 34px;
       background:
-        radial-gradient(circle at 32% 22%, rgba(214, 181, 109, 0.32), transparent 30%),
-        radial-gradient(circle at 70% 72%, rgba(255, 255, 255, 0.18), transparent 34%),
-        linear-gradient(145deg, #0d253c 0%, #163B5C 58%, #0b2238 100%);
+        linear-gradient(180deg, rgba(16, 42, 67, 0.1), rgba(16, 42, 67, 0.3)),
+        url("foto-casal-1.jpg") center / cover no-repeat;
       box-shadow: var(--sombra);
       border: 10px solid rgba(255, 255, 255, 0.78);
       position: relative;
       overflow: hidden;
-      display: grid;
-      place-items: center;
-    }
-
-    .hero-photo::before {
-      content: "G&K";
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      border: 1px solid rgba(214, 181, 109, 0.78);
-      display: grid;
-      place-items: center;
-      font-family: "Cinzel", serif;
-      color: var(--dourado);
-      font-size: 3.2rem;
-      letter-spacing: 2px;
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow:
-        0 0 0 14px rgba(214, 181, 109, 0.08),
-        inset 0 0 0 10px rgba(214, 181, 109, 0.08);
     }
 
     .hero-photo::after {
@@ -580,11 +559,6 @@
       gap: 18px;
     }
 
-    .info-single-card {
-      grid-template-columns: minmax(280px, 620px);
-      justify-content: center;
-    }
-
     .card {
       background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(16, 42, 67, 0.08);
@@ -708,6 +682,30 @@
 
     .rsvp-actions .btn {
       flex: 1 1 190px;
+    }
+
+    .guest-count-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(214, 181, 109, 0.28);
+      border-radius: 20px;
+      padding: 16px;
+      margin: 14px 0;
+    }
+
+    .guest-count-box label {
+      color: white;
+    }
+
+    .guest-count-help {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-top: 7px;
+    }
+
+    .guest-count-box input {
+      font-weight: 900;
+      font-size: 1rem;
     }
 
     .status-box {
@@ -1046,6 +1044,61 @@
       width: min(330px, 100%);
     }
 
+    .god-gallery {
+      margin-top: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(214, 181, 109, 0.18), transparent 30%),
+        rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(214, 181, 109, 0.32);
+      border-radius: 34px;
+      padding: clamp(24px, 4vw, 36px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .god-gallery h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(3rem, 8vw, 4.8rem);
+      color: var(--dourado);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .god-gallery p {
+      color: rgba(255, 255, 255, 0.78);
+      text-align: center;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 26px;
+    }
+
+    .god-gallery-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.8fr;
+      grid-template-rows: 240px 240px;
+      gap: 14px;
+    }
+
+    .god-gallery-item {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 7px solid rgba(255, 255, 255, 0.88);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.16);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .god-gallery-item.big {
+      grid-row: span 2;
+    }
+
+    .god-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .gifts-toolbar {
       display: flex;
       gap: 10px;
@@ -1183,6 +1236,32 @@
       line-height: 1.7;
     }
 
+    .photos-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      grid-template-rows: 260px 260px;
+      gap: 14px;
+    }
+
+    .photo-card {
+      border-radius: 28px;
+      overflow: hidden;
+      background: #DDE5EC;
+      box-shadow: 0 14px 32px rgba(16, 42, 67, 0.08);
+      border: 8px solid white;
+    }
+
+    .photo-card.big {
+      grid-row: span 2;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .message-card {
       width: min(760px, 100%);
       margin: 0 auto;
@@ -1262,6 +1341,16 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .photos-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 220px 220px;
+      }
+
+      .photo-card.big {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
       .manual-padrinhos {
         grid-template-columns: 1fr;
       }
@@ -1323,6 +1412,15 @@
         grid-template-columns: 1fr;
       }
 
+      .photos-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 280px);
+      }
+
+      .photo-card.big {
+        grid-column: span 1;
+      }
+
       .btn {
         width: 100%;
       }
@@ -1364,6 +1462,14 @@
         width: min(310px, 100%);
       }
 
+      .god-gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 260px);
+      }
+
+      .god-gallery-item.big {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
@@ -1503,7 +1609,7 @@
           <p class="section-subtitle">Confira os detalhes para celebrar conosco.</p>
         </div>
 
-        <div class="cards-2 info-single-card">
+        <div class="cards-2">
           <div class="card">
             <h3>Cerimônia e recepção</h3>
             <p><strong>Data:</strong> 24 de outubro de 2026</p>
@@ -1514,6 +1620,16 @@
             <a class="btn btn-dark" href="https://maps.app.goo.gl/XPQRa9ijJBXScs8g8" target="_blank" rel="noopener">
               Abrir no Google Maps
             </a>
+          </div>
+
+          <div class="card">
+            <h3>Informações importantes</h3>
+            <p>Nosso casamento será realizado ao ar livre.</p>
+            <p>Escolha um look confortável para aproveitar cada momento conosco.</p>
+            <p>Pedimos que chegue com alguns minutos de antecedência para acomodação.</p>
+            <p>A programação e demais orientações poderão ser atualizadas por aqui.</p>
+            <br>
+            <a class="btn btn-outline" href="#confirmar">Confirmar minha presença</a>
           </div>
         </div>
       </div>
@@ -1568,7 +1684,7 @@
         <div class="section-head">
           <div class="section-kicker">Confirmação</div>
           <h2 class="section-title">Confirme sua presença</h2>
-          <p class="section-subtitle">Este convite é individual. Confirme se você poderá estar conosco até 01/10/2026.</p>
+          <p class="section-subtitle">Confirme se você poderá estar conosco até 01/10/2026. Para casal ou família, informe também a quantidade total de pessoas.</p>
         </div>
 
         <div class="rsvp-card">
@@ -1576,6 +1692,16 @@
           <div id="presenceStatus" class="status-box status-pending">Sua confirmação ainda está pendente.</div>
 
           <p>Sua presença é muito importante para nós. Selecione uma das opções abaixo para confirmar.</p>
+
+          <div id="guestCountBox" class="guest-count-box hidden">
+            <div class="form-group">
+              <label for="guestCountInput">Quantas pessoas deste convite irão comparecer?</label>
+              <input id="guestCountInput" type="number" min="1" max="20" step="1" inputmode="numeric" value="1">
+              <div id="guestCountHelp" class="guest-count-help">
+                Informe a quantidade total de pessoas que irão comparecer usando este convite.
+              </div>
+            </div>
+          </div>
 
           <div class="form-group">
             <label for="presenceObs">Observação, se desejar</label>
@@ -1760,6 +1886,36 @@
             </div>
           </div>
         </div>
+
+        <div class="god-gallery">
+          <h3>Galeria especial</h3>
+          <p>
+            Algumas memórias e registros especiais para deixar esse espaço ainda mais nosso.
+            As fotos podem ser trocadas depois por imagens específicas dos noivos ou dos padrinhos.
+          </p>
+
+          <div class="god-gallery-grid">
+            <div class="god-gallery-item big">
+              <img src="foto-casal-1.jpg" alt="Guilherme e Khauane">
+            </div>
+
+            <div class="god-gallery-item">
+              <img src="foto-casal-2.jpg" alt="Guilherme e Khauane">
+            </div>
+
+            <div class="god-gallery-item">
+              <img src="foto-casal-3.jpg" alt="Guilherme e Khauane">
+            </div>
+
+            <div class="god-gallery-item">
+              <img src="foto-casal-4.jpg" alt="Guilherme e Khauane">
+            </div>
+
+            <div class="god-gallery-item">
+              <img src="foto-casal-5.jpg" alt="Guilherme e Khauane">
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1800,6 +1956,38 @@
             </p>
             <br>
             <button class="btn btn-dark" onclick="copyPix()">Copiar chave Pix</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fotos">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Memórias</div>
+          <h2 class="section-title">Nossa galeria</h2>
+          <p class="section-subtitle">As fotos podem ser trocadas depois.</p>
+        </div>
+
+        <div class="photos-grid">
+          <div class="photo-card big">
+            <img src="foto-casal-2.jpg" alt="Guilherme e Khauane">
+          </div>
+
+          <div class="photo-card">
+            <img src="foto-casal-3.jpg" alt="Guilherme e Khauane">
+          </div>
+
+          <div class="photo-card">
+            <img src="foto-casal-4.jpg" alt="Guilherme e Khauane">
+          </div>
+
+          <div class="photo-card">
+            <img src="foto-casal-5.jpg" alt="Guilherme e Khauane">
+          </div>
+
+          <div class="photo-card">
+            <img src="foto-casal-6.jpg" alt="Guilherme e Khauane">
           </div>
         </div>
       </div>
@@ -1910,6 +2098,7 @@
       document.getElementById("guestPill").textContent = `Olá, ${currentGuest.nome} • ${tipoTexto}`;
       document.getElementById("rsvpTitle").textContent = `Olá, ${currentGuest.nome}!`;
       document.getElementById("presenceObs").value = currentGuest.observacao || "";
+      setupGuestCountField();
 
       if (god) {
         document.getElementById("coverTitle").innerHTML = "Área especial<br>dos padrinhos";
@@ -1945,13 +2134,70 @@
       return map[tipo] || "Convidado";
     }
 
+    function getDefaultGuestCount(tipo) {
+      if (tipo === "casal_padrinhos") return 2;
+      if (tipo === "familia" || tipo === "pais") return 2;
+      return 1;
+    }
+
+    function shouldAskGuestCount(tipo) {
+      return ["casal_padrinhos", "familia", "pais"].includes(tipo);
+    }
+
+    function setupGuestCountField() {
+      const tipo = currentGuest.tipo || "convidado";
+      const box = document.getElementById("guestCountBox");
+      const input = document.getElementById("guestCountInput");
+      const help = document.getElementById("guestCountHelp");
+
+      if (!box || !input || !help) return;
+
+      const defaultCount = getDefaultGuestCount(tipo);
+      const savedCount = Number(currentGuest.quantidade_pessoas || currentGuest.quantidade_confirmada || 0);
+      const countValue = savedCount > 0 ? savedCount : defaultCount;
+
+      input.value = countValue;
+
+      if (shouldAskGuestCount(tipo)) {
+        box.classList.remove("hidden");
+
+        if (tipo === "casal_padrinhos") {
+          help.textContent = "Como este convite é para casal, o sistema considera 2 pessoas. Ajuste somente se necessário.";
+        } else {
+          help.textContent = "Informe a quantidade total de familiares que irão comparecer usando este convite.";
+        }
+      } else {
+        box.classList.add("hidden");
+      }
+    }
+
+    function getConfirmedGuestCount() {
+      const tipo = currentGuest.tipo || "convidado";
+      const input = document.getElementById("guestCountInput");
+
+      if (!shouldAskGuestCount(tipo)) {
+        return getDefaultGuestCount(tipo);
+      }
+
+      const value = Number(input?.value || 0);
+
+      if (!Number.isInteger(value) || value < 1) {
+        return null;
+      }
+
+      return value;
+    }
+
     function updatePresenceBox() {
       const box = document.getElementById("presenceStatus");
       box.className = "status-box";
 
       if (currentGuest.status_presenca === "confirmado") {
+        const total = Number(currentGuest.quantidade_pessoas || currentGuest.quantidade_confirmada || getDefaultGuestCount(currentGuest.tipo || "convidado"));
         box.classList.add("status-confirmed");
-        box.textContent = "Presença confirmada. Ficamos muito felizes em ter você conosco!";
+        box.textContent = total > 1
+          ? `Presença confirmada para ${total} pessoas. Ficamos muito felizes em ter vocês conosco!`
+          : "Presença confirmada. Ficamos muito felizes em ter você conosco!";
       } else if (currentGuest.status_presenca === "nao_vai") {
         box.classList.add("status-no");
         box.textContent = "Você informou que não poderá comparecer. Agradecemos pelo carinho!";
@@ -1965,12 +2211,19 @@
       if (!currentGuest) return;
 
       const obs = document.getElementById("presenceObs").value.trim();
+      const guestCount = status === "confirmado" ? getConfirmedGuestCount() : 0;
+
+      if (status === "confirmado" && guestCount === null) {
+        toast("Informe uma quantidade válida de pessoas.");
+        return;
+      }
 
       const { error } = await db
         .from("convidados")
         .update({
           status_presenca: status,
           observacao: obs || null,
+          quantidade_pessoas: guestCount,
           data_confirmacao: new Date().toISOString()
         })
         .eq("id", currentGuest.id);
@@ -1983,6 +2236,7 @@
 
       currentGuest.status_presenca = status;
       currentGuest.observacao = obs;
+      currentGuest.quantidade_pessoas = guestCount;
       currentGuest.data_confirmacao = new Date().toISOString();
 
       updatePresenceBox();
